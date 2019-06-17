@@ -44,7 +44,7 @@ parser.add_argument('--target_update_interval', type=int, default=1, metavar='N'
                     help='Value target update per no. of updates per step (default: 1)')
 parser.add_argument('--replay_size', type=int, default=1000000, metavar='N',
                     help='size of replay buffer (default: 10000000)')
-parser.add_argument('--cuda', action="store_true",default=True,
+parser.add_argument('--cuda', action="store_true",default=False,
                     help='run on CUDA (default: False)')
 args = parser.parse_args()
 
@@ -68,6 +68,7 @@ memory = ReplayMemory(args.replay_size)
 # Training Loop
 total_numsteps = 0
 updates = 0
+time_start = time.time()
 
 for i_episode in itertools.count(1):
     episode_reward = 0
@@ -135,7 +136,7 @@ for i_episode in itertools.count(1):
         writer.add_scalar('avg_reward/test', avg_reward, i_episode)
 
         print("----------------------------------------")
-        print("Test Episodes: {}, Avg. Reward: {}".format(episodes, round(avg_reward, 2)))
+        print("Test Episodes: {}, Avg. Reward: {}, Time:{}".format(episodes, round(avg_reward, 2),int(time.time()-time_start)))
         print("----------------------------------------")
 
 env.close()
