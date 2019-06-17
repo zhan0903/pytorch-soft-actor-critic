@@ -6,7 +6,8 @@ import numpy as np
 import itertools
 import torch
 from sac import SAC
-from tensorboardX import SummaryWriter
+# from tensorboardX import SummaryWriter
+from torch.utils.tensorboard import SummaryWriter
 from normalized_actions import NormalizedActions
 from replay_memory import ReplayMemory
 
