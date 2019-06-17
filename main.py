@@ -44,7 +44,7 @@ parser.add_argument('--target_update_interval', type=int, default=1, metavar='N'
                     help='Value target update per no. of updates per step (default: 1)')
 parser.add_argument('--replay_size', type=int, default=1000000, metavar='N',
                     help='size of replay buffer (default: 10000000)')
-parser.add_argument('--cuda', action="store_true",default=False,
+parser.add_argument('--cuda', action="store_true",default=True,
                     help='run on CUDA (default: False)')
 args = parser.parse_args()
 
@@ -112,7 +112,7 @@ for i_episode in itertools.count(1):
         break
 
     writer.add_scalar('reward/train', episode_reward, i_episode)
-    print("Episode: {}, total numsteps: {}, episode steps: {}, reward: {}".format(i_episode, total_numsteps, episode_steps, round(episode_reward, 2)))
+    print("Episode: {}, total numsteps: {}, episode steps: {}, reward: {},time:{}".format(i_episode, total_numsteps, episode_steps, round(episode_reward, 2),int(time.time()-time_start)))
 
     if i_episode % 10 == 0 and args.eval == True:
         avg_reward = 0.
