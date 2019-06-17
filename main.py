@@ -11,7 +11,7 @@ from normalized_actions import NormalizedActions
 from replay_memory import ReplayMemory
 
 parser = argparse.ArgumentParser(description='PyTorch REINFORCE example')
-parser.add_argument('--env-name', default="HalfCheetah-v2",
+parser.add_argument('--env-name', default="HalfCheetahBulletEnv-v0",
                     help='name of the environment to run')
 parser.add_argument('--policy', default="Gaussian",
                     help='algorithm to use: Gaussian | Deterministic')
